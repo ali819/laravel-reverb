@@ -1,13 +1,14 @@
-## Laravel Reverb (Realtime Chat)
+## Laravel Reverb - Realtime Chat 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 ### Instalasi
 1. Clone repository: `git clone https://github.com/ali819/laravel-reverb.git`
-2. Masuk ke direktori proyek & Instal dependensi: `composer install`
-3. Salin file `.env.example` dan ubah nama menjadi `.env` dengan perintah `cp .env.example .env`
-4. Generate key `php artisan key:generate`
-5. Jalankan migrasi untuk membuat tabel: `php artisan migrate`
-6. Install dependency `npm install`
-7. Jalankan reverb socket `php artisan reverb:start`
-8. Jalankan aplikasi: `php artisan serve`
+2. Masuk ke direktori proyek `cd laravel-reverb`
+3. Instal dependensi: `composer install`
+4. Salin file `.env.example` dan ubah nama menjadi `.env` dengan perintah `cp .env.example .env`
+5. Generate key `php artisan key:generate`
+6. Jalankan migrasi untuk membuat tabel: `php artisan migrate`
+7. Install dependency `npm install` & `npm run build`
+8. Jalankan reverb socket `php artisan reverb:start`
+9. Jalankan aplikasi: `php artisan serve`
