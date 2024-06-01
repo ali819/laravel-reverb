@@ -13,7 +13,7 @@
     <div class="font-sans text-gray-900 antialiased">
         <div id="card" class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-[#f8f4f3] pr-4 pl-4">
             <div>
-                <a href="">
+                <a href="{{ route('home') }}">
                     <h2 class="font-bold text-3xl">
                         Realtime <span class="bg-blue-500 text-white px-2 rounded-md">Chat</span>
                     </h2>
@@ -25,7 +25,7 @@
                     @csrf
                     <div class="mt-4">
                         <label class="block font-medium text-sm text-gray-700" for="" value="" />
-                        <input type='text' name='message' placeholder='Ketik pesan anda ..' id='messageText' class="w-full rounded-md py-2.5 px-4 border text-sm outline-blue-500" />
+                        <input type='text' name='message' placeholder='Ketik pesan anda ..' id='messageText' class="w-full rounded-md py-2.5 px-4 border text-sm outline-blue-500"/>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
@@ -49,9 +49,15 @@
             const submitButton = document.getElementById("submit");
             var formData = new FormData(form);
 
+            var text = document.getElementById("messageText").value;
+            if(text == "") {
+                alert("Ketik pesan anda ..");
+                return false;
+            }
+
             submitButton.textContent = "Memproses ..";
             submitButton.disabled = true;
-
+            
             fetch("{{ route('sendMessage') }}", {
                     method: 'POST',
                     body: formData
@@ -92,6 +98,20 @@
             });
 
             console.log('Listening for messages on channel...');
+
+            // Prevent form submission on Enter key
+            const form = document.getElementById("form");
+            const messageInput = document.getElementById("messageText");
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+            });
+            messageInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    submitForm();
+                }
+            });
+            
         }
     </script>
 </body>
